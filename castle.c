@@ -1,4 +1,4 @@
-// gcc snowman_sample.c -lglut -lGL -lGLU -lm -o snowman && ./snowman
+// gcc castle.c -lglut -lGL -lGLU -lm -o castle && ./castle
 
 #include <GL/glut.h>
   
@@ -65,7 +65,7 @@ void SetupRC(){
 
 }  
   
-// Respond to arrow keys (rotate snowman)
+// Respond to arrow keys (rotate castle)
 void SpecialKeys(int key, int x, int y){  
 
     if(key == GLUT_KEY_LEFT)  

@@ -1,47 +1,51 @@
 #include "particulas.hpp"
 
-#define NUM 8000
+#define NUM 3000
 
-Particula fire[NUM];
+Particula bolha[NUM];
 
 void iniciaFlocos(int part) {
-    fire[part].tempoVida = (double) (10 + rand() % 4) / 10;
-    fire[part].gravidade = 0.5;
-    fire[part].pos_x = (double) ((rand() % 100) - 60)/10;
-    fire[part].pos_z = (double) ((rand() % 200) - 100)/10;
-    fire[part].pos_y = -5;
-    fire[part].velocidade = 1.5;
-    fire[part].vivo = false;
+    bolha[part].tempoVida = (double) (10 + rand() % 4) / 10;
+    bolha[part].gravidade = 0.5;
+    bolha[part].pos_x = (double) ((rand() % 100) - 60)/10;
+    bolha[part].pos_z = (double) ((rand() % 200) - 100)/10;
+    bolha[part].pos_y = -5;
+    bolha[part].velocidade = 1.5;
+    bolha[part].vivo = false;
     //define o tamanho
  
-    fire[part].raio = (double)(15 + rand()%60)/1000;
+    bolha[part].raio = (double)(15 + rand()%60)/1000;
 }
 
 void bolhas_mar(){
 
     for(int i = 0; i < NUM; i++ ){
-        glColor3f(0.0, 0.0, 0.7);
+        glColor3f(0.1, 0.0, 0.7); //set_bolhascolor
         glPushMatrix();
-            glTranslatef(fire[i].pos_x, fire[i].pos_y, fire[i].pos_z);
-            glutSolidSphere(fire[i].raio, 10, 10);
+            glTranslatef(bolha[i].pos_x, bolha[i].pos_y, bolha[i].pos_z);
+            glutSolidSphere(bolha[i].raio, 10, 10);
         glPopMatrix();
 
-        if (fire[i].vivo) {
+        if (bolha[i].vivo) {
             //direção de movimento
             double quedax = -5000 + rand() % 2000;
-            fire[i].pos_x += fire[i].velocidade /quedax;
-            fire[i].pos_y += fire[i].velocidade /1000;
-            fire[i].velocidade += fire[i].gravidade;
-            fire[i].tempoVida -= 0.006;
+			if(i%2==0){
+				bolha[i].pos_x -= bolha[i].velocidade /quedax;
+			}else{
+				bolha[i].pos_x += bolha[i].velocidade /quedax;
+			}
+            bolha[i].pos_y += bolha[i].velocidade /1000;
+            bolha[i].velocidade += bolha[i].gravidade;
+            bolha[i].tempoVida -= 0.007;
 
         }
         else {
             if (rand() % 100 < 2) {
-                fire[i].vivo = true;
+                bolha[i].vivo = true;
             }
         }
 
-        if (fire[i].tempoVida < 0.0) {
+        if (bolha[i].tempoVida < 0.0) {
             iniciaFlocos(i);
         }
     }
@@ -52,13 +56,6 @@ void init(void){
 	glOrtho(0, 640, 0, 480, -1, 1);
 }
 
-void bolotinhaPreta(double x, double y, double z){
-	glPushMatrix();
-		glColor3f(0.0, 0.0, 0.0);
-		glTranslatef(x, y, z);
-	    glutSolidSphere(0.05, 20, 20);
-	glPopMatrix();
-}
 
 void display(void){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
