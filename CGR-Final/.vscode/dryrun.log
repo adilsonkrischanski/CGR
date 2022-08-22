@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/adilson/Udesc/CGR/CGR-Final'
+g++ *.cpp -O2 -std=c++14 &&./a.out 3840 2160
+make: Leaving directory '/home/adilson/Udesc/CGR/CGR-Final'
+ 

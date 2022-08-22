@@ -1,0 +1,19 @@
+Lista de Tarefas
+
+Alunos: Adilson Krischanski
+        Karla Alexsandra de Souza Joriatti
+        
+Trabalho: RayTracing
+
+Primeira parte em dupla:
+	criar e salvar uma imagem colorida com bitmap, colocando valores sortidos de cor para os pixels.
+Segunda parte em Dupla:
+	criar o arquivo pra camera e raios e adicionar funções no main,mas ainda não faz nada de diferente.
+Terceira Parte em Dupla:
+	cor(sem reflexividade) e vetor
+Quarta Parte em Dupla:
+	criar a header pra objetos quaisquer na cena e fazer o header para esfera e plano a partir do header de objetos.
+Quinta Parte em Dupla:
+	aplicar reflexividade em color e testar renderizar uma esfera e planos
+Sexta Parte em Dupla:
+	função pra salvar resultados na pasta result, makefile e criação do gif dos resultados.
